@@ -1,0 +1,263 @@
+@page "/Fac/{Code}/{nomFiliere}/{niveau}/{codeMatiere}/{choix}/{nomChapitre}"
+@using Layout
+@inject NavigationManager NavigationManager
+@inject IJSRuntime JSRuntime
+@using System.IO
+@using System.Text
+@layout MainLayout
+
+
+<Entete nomFiliere=@nomFiliere icone=@icone NomFaculte=@Code niveau=@niveau codeMatiere=@codeMatiere pag="@($"/Fac/{Code}/{nomFiliere}/{niveau}/{codeMatiere}")" />
+
+@if (contenu)
+{
+
+    <div id="contentContainer" class="chapter-content">
+        <h1 class='chapter-title'>@titre</h1>
+        @((MarkupString)chapitreContent) 
+        
+    </div>
+}
+else
+{
+  
+   <div class="document-vide">
+    <i class="fas fa-file fa-5x" style="font-size: ;"></i>
+<br><br>
+Le contenu de ce chapitre est actuellement indisponible. Nous le mettrons à jour bientôt.<br> Merci de revenir un peu plus tard.
+   </div>
+}
+
+<button class="btn btn-primary mt-3" onclick="GeneratePdf('bonjour')">Générer PDF</button>
+
+<Footer />
+
+@code {
+    [Parameter] public string nomFiliere { get; set; } = "";
+    [Parameter] public string niveau { get; set; } = "";
+    [Parameter] public string Code { get; set; } = "";
+    [Parameter] public string codeMatiere { get; set; } = "";
+    [Parameter] public string choix { get; set; } = "";
+    [Parameter] public string nomChapitre { get; set; } = "";
+    public static List<(string Code, string nomFiliere, string nomChapitre, string choix, string niveau, string codeMatiere)> parametre { get; set; } = new List<(string Code, string nomFiliere, string nomChapitre, string choix, string niveau, string codeMatiere)>();
+    public string? icone = "";
+    public bool contenu = false;
+    public string? titre = "";
+    private string chapitreContent = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        icone = Niveau.icone;
+
+        parametre = new List<(string Code, string nomFiliere, string nomChapitre, string choix, string niveau, string codeMatiere)>
+        {
+            (Code, nomFiliere, nomChapitre, choix, niveau, codeMatiere)
+        };
+
+        titre = Matiere.RetirerSeparateurs(nomChapitre);
+
+
+        string path = Path.Combine("wwwroot", Code, nomFiliere, niveau, codeMatiere, choix ?? "");
+        var content = await File.ReadAllTextAsync($"{path}/{nomChapitre}.txt");
+        if(string.IsNullOrEmpty(content)){
+        contenu = false;
+        }else{
+        chapitreContent = ParseContent(content);
+        contenu = true;
+        }
+    }
+
+private string ParseContent(string content)
+{
+    var htmlContent = new StringBuilder();
+    var lines = content.Split(new[] { "\n" }, StringSplitOptions.None);
+    string paragraph = string.Empty;
+    bool inImportantMessage = false;
+    bool inTable = false;
+    bool isHeader = false;
+
+    foreach (var line in lines)
+    {
+        var trimmedLine = line.Trim();
+
+        // Vérifie si la ligne commence par || (début du tableau)
+        if (trimmedLine.StartsWith("||"))
+        {
+            if (!inTable)
+            {
+                htmlContent.Append("<div class='table-container'>"); // Div de conteneur pour le tableau
+                htmlContent.Append("<table class='table'>");
+                inTable = true;
+                isHeader = true; // Indiquer que c'est l'entête du tableau
+            }
+
+            // Traitement de la ligne d'entête du tableau
+            ProcessTable(trimmedLine, ref inTable, ref isHeader, htmlContent);
+        }
+        // Vérifie si la ligne commence par |_ (fin du tableau)
+        else if (trimmedLine.StartsWith("|_"))
+        {
+            if (inTable)
+            {
+                htmlContent.Append("</table></div>"); // Fermeture du tableau
+                inTable = false;
+            }
+        }
+        // Vérifie si la ligne commence par | (ligne de données du tableau)
+        else if (trimmedLine.StartsWith("|") && inTable)
+        {
+            // Traitement des lignes de données du tableau
+            ProcessTable(trimmedLine, ref inTable, ref isHeader, htmlContent);
+        }
+        else if (trimmedLine.StartsWith("#"))
+        {
+            // Traitement des en-têtes
+            ProcessHeader(trimmedLine, htmlContent);
+        }
+        else if (trimmedLine.StartsWith("$") && trimmedLine.EndsWith("$"))
+        {
+            // Traitement des images
+            ProcessImage(trimmedLine, htmlContent);
+        }
+        else if (trimmedLine.Contains("~") || trimmedLine.Contains("["))
+        {
+            // Traitement des textes surlignés
+            ProcessHighlightedText(trimmedLine, htmlContent, '[', ']', "strong-word");
+        }
+        else if (trimmedLine.Contains("<"))
+        {
+            // Traitement des mots mathématiques
+            ProcessHighlightedText(trimmedLine, htmlContent, '<', '>', "math-word");
+        }
+        else if (trimmedLine.StartsWith("*") && string.IsNullOrEmpty(paragraph) && trimmedLine.EndsWith("*"))
+        {
+            // Traitement des paragraphes spéciaux
+            paragraph += trimmedLine.Substring(1, trimmedLine.Length - 2).Trim();
+            htmlContent.Append($"<p class='special-paragraph'>{paragraph}</p>");
+            paragraph = string.Empty;
+        }
+        else if (trimmedLine.EndsWith("*") && !string.IsNullOrEmpty(paragraph))
+        {
+            // Traitement de la fin d'un paragraphe spécial
+            paragraph += trimmedLine.Substring(0, trimmedLine.Length - 1).Trim();
+            htmlContent.Append($"<p class='special-paragraph'>{paragraph}</p>");
+            paragraph = string.Empty;
+        }
+        else if (trimmedLine.StartsWith("!") && !inImportantMessage)
+        {
+            // Traitement des messages importants
+            inImportantMessage = true;
+            htmlContent.Append("<div class='important-message'>");
+            htmlContent.Append($"{trimmedLine.Substring(1).Trim()}<br><br>");
+        }
+        else if (inImportantMessage && !trimmedLine.EndsWith("!"))
+        {
+            // Continuer le message important si on n'a pas rencontré de nouvelle balise "!"
+            htmlContent.Append($"{trimmedLine.Trim()} ");
+        }
+    else if (trimmedLine.EndsWith("!") )
+        {
+            // Fin d'un message important
+            htmlContent.Append($"{trimmedLine.Substring(2).Trim()}");
+            htmlContent.Append("</div>");
+            inImportantMessage = false;
+        }
+        else
+        {
+            // C'est une ligne de texte normal qui n'est ni un tableau ni un en-tête, donc on l'ajoute comme un paragraphe
+            htmlContent.Append($"<p>{trimmedLine}</p>");
+        }
+    }
+
+    return htmlContent.ToString();
+}
+
+private void ProcessHeader(string line, StringBuilder htmlContent)
+{
+    int hashCount = line.TakeWhile(c => c == '#').Count();
+
+    if (line.Length > hashCount)
+    {
+        var title = line.Substring(hashCount + 1).Trim();
+        htmlContent.Append($"<h{hashCount} class='title-level-{hashCount}'>{title}</h{hashCount}>");
+    }
+}
+
+private void ProcessImage(string line, StringBuilder htmlContent)
+{
+    if (line.Length > 2)
+    {
+        var imagePath = line.Substring(1, line.Length - 2);
+        htmlContent.Append($"<div class='image-container'><img src='images/{imagePath}' alt='Image' class='chapter-image' /></div>");
+    }
+}
+
+private void ProcessHighlightedText(string line, StringBuilder htmlContent, char startChar, char endChar, string style)
+{
+    var beforeImportant = line.Split(new[] { startChar }, 2)[0];
+
+    // Assurez-vous que l'index du caractère de fin existe
+    int endIndex = line.IndexOf(endChar, beforeImportant.Length);
+    if (endIndex != -1)
+    {
+        var importantWords = line.Substring(beforeImportant.Length + 1, endIndex - beforeImportant.Length - 1);
+        var afterImportant = line.Substring(beforeImportant.Length + importantWords.Length + 2);
+        htmlContent.Append($"<p>{beforeImportant}<span class='{style}'>{importantWords}</span>{afterImportant}</p>");
+    }
+    else
+    {
+        // Si le caractère de fin n'existe pas, ajoutez simplement la ligne sans mise en surbrillance
+        htmlContent.Append($"<p>{line}</p>");
+    }
+}
+
+private void ProcessTable(string line, ref bool inTable, ref bool isHeader, StringBuilder htmlContent)
+{
+    if (line.StartsWith("||"))
+    {
+        // Ligne d'en-tête du tableau
+        if (!isHeader)
+        {
+            htmlContent.Append("<thead><tr>");
+            isHeader = true;
+        }
+
+        var headerRow = line.Split('|');
+        foreach (var cell in headerRow)
+        {
+            if (!string.IsNullOrEmpty(cell))
+            {
+                htmlContent.Append($"<th>{cell.Trim()}</th>");
+            }
+        }
+        htmlContent.Append("</tr></thead>");
+    }
+    else if (line.StartsWith("|"))
+    {
+        // Ligne de données du tableau
+        if (isHeader)
+        {
+            isHeader = false;
+        }
+
+        htmlContent.Append("<tbody><tr>");
+        var rowContent = line.Trim('|').Split('|');
+        foreach (var cell in rowContent)
+        {
+            if (!string.IsNullOrEmpty(cell))
+            {
+                htmlContent.Append($"<td>{cell.Trim()}</td>");
+            }
+        }
+        htmlContent.Append("</tr></tbody>");
+    }
+}
+
+
+    private async Task GeneratePdf(string content)
+    {
+        var pdfOptions = new { html = chapitreContent, pageSize = "A4" };
+        await JSRuntime.InvokeVoidAsync("generatePdf", pdfOptions);
+    }
+}
+

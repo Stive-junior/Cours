@@ -1,0 +1,169 @@
+{
+  "Files": [
+    {
+      "Id": "/home/stive-junior/ICT4D/obj/Release/net8.0/scopedcss/projectbundle/ICT4D.bundle.scp.css",
+      "PackagePath": "staticwebassets/ICT4D.bundle.scp.css"
+    },
+    {
+      "Id": "/home/stive-junior/ICT4D/wwwroot/FS/ICT4D/L1/ICT103/Cours/Introduction_a_la_programmation_en_c.txt",
+      "PackagePath": "staticwebassets/FS/ICT4D/L1/ICT103/Cours/Introduction_a_la_programmation_en_c.txt"
+    },
+    {
+      "Id": "/home/stive-junior/ICT4D/wwwroot/FS/ICT4D/L1/ICT107/Cours/Raisonnement_logique.txt",
+      "PackagePath": "staticwebassets/FS/ICT4D/L1/ICT107/Cours/Raisonnement_logique.txt"
+    },
+    {
+      "Id": "/home/stive-junior/ICT4D/wwwroot/FS/ICT4D/L2/ICT203/Cours/Introduction_to_proramming-language.txt",
+      "PackagePath": "staticwebassets/FS/ICT4D/L2/ICT203/Cours/Introduction_to_proramming-language.txt"
+    },
+    {
+      "Id": "/home/stive-junior/ICT4D/wwwroot/FS/ICT4D/L2/ICT205/Cours/Application_Console.txt",
+      "PackagePath": "staticwebassets/FS/ICT4D/L2/ICT205/Cours/Application_Console.txt"
+    },
+    {
+      "Id": "/home/stive-junior/ICT4D/wwwroot/FS/ICT4D/L2/ICT205/Cours/Introduction_a_la_Programmation_.NET.txt",
+      "PackagePath": "staticwebassets/FS/ICT4D/L2/ICT205/Cours/Introduction_a_la_Programmation_.NET.txt"
+    },
+    {
+      "Id": "/home/stive-junior/ICT4D/wwwroot/FS/ICT4D/L2/ICT205/Cours/Le_Langage_Csharp.txt",
+      "PackagePath": "staticwebassets/FS/ICT4D/L2/ICT205/Cours/Le_Langage_Csharp.txt"
+    },
+    {
+      "Id": "/home/stive-junior/ICT4D/wwwroot/FS/ICT4D/L2/ICT207/Cours/Introduction_a_la_programmation_Java.txt",
+      "PackagePath": "staticwebassets/FS/ICT4D/L2/ICT207/Cours/Introduction_a_la_programmation_Java.txt"
+    },
+    {
+      "Id": "/home/stive-junior/ICT4D/wwwroot/app.css",
+      "PackagePath": "staticwebassets/app.css"
+    },
+    {
+      "Id": "/home/stive-junior/ICT4D/wwwroot/bootstrap/bootstrap.min.css",
+      "PackagePath": "staticwebassets/bootstrap/bootstrap.min.css"
+    },
+    {
+      "Id": "/home/stive-junior/ICT4D/wwwroot/bootstrap/bootstrap.min.css.map",
+      "PackagePath": "staticwebassets/bootstrap/bootstrap.min.css.map"
+    },
+    {
+      "Id": "/home/stive-junior/ICT4D/wwwroot/css/chapitre.css",
+      "PackagePath": "staticwebassets/css/chapitre.css"
+    },
+    {
+      "Id": "/home/stive-junior/ICT4D/wwwroot/css/faculte.css",
+      "PackagePath": "staticwebassets/css/faculte.css"
+    },
+    {
+      "Id": "/home/stive-junior/ICT4D/wwwroot/css/styles.css",
+      "PackagePath": "staticwebassets/css/styles.css"
+    },
+    {
+      "Id": "/home/stive-junior/ICT4D/wwwroot/favicon.png",
+      "PackagePath": "staticwebassets/favicon.png"
+    },
+    {
+      "Id": "/home/stive-junior/ICT4D/wwwroot/images/VS1.jpg",
+      "PackagePath": "staticwebassets/images/VS1.jpg"
+    },
+    {
+      "Id": "/home/stive-junior/ICT4D/wwwroot/images/VS2.jpg",
+      "PackagePath": "staticwebassets/images/VS2.jpg"
+    },
+    {
+      "Id": "/home/stive-junior/ICT4D/wwwroot/images/VS3.jpg",
+      "PackagePath": "staticwebassets/images/VS3.jpg"
+    },
+    {
+      "Id": "/home/stive-junior/ICT4D/wwwroot/images/VS4.jpg",
+      "PackagePath": "staticwebassets/images/VS4.jpg"
+    },
+    {
+      "Id": "/home/stive-junior/ICT4D/wwwroot/images/VS5.jpg",
+      "PackagePath": "staticwebassets/images/VS5.jpg"
+    },
+    {
+      "Id": "/home/stive-junior/ICT4D/wwwroot/images/code.svg",
+      "PackagePath": "staticwebassets/images/code.svg"
+    },
+    {
+      "Id": "/home/stive-junior/ICT4D/wwwroot/images/corrector.png",
+      "PackagePath": "staticwebassets/images/corrector.png"
+    },
+    {
+      "Id": "/home/stive-junior/ICT4D/wwwroot/images/dossier.png",
+      "PackagePath": "staticwebassets/images/dossier.png"
+    },
+    {
+      "Id": "/home/stive-junior/ICT4D/wwwroot/images/eleve.png",
+      "PackagePath": "staticwebassets/images/eleve.png"
+    },
+    {
+      "Id": "/home/stive-junior/ICT4D/wwwroot/images/envoi.png",
+      "PackagePath": "staticwebassets/images/envoi.png"
+    },
+    {
+      "Id": "/home/stive-junior/ICT4D/wwwroot/images/gmail.png",
+      "PackagePath": "staticwebassets/images/gmail.png"
+    },
+    {
+      "Id": "/home/stive-junior/ICT4D/wwwroot/images/ict.png",
+      "PackagePath": "staticwebassets/images/ict.png"
+    },
+    {
+      "Id": "/home/stive-junior/ICT4D/wwwroot/images/img.png",
+      "PackagePath": "staticwebassets/images/img.png"
+    },
+    {
+      "Id": "/home/stive-junior/ICT4D/wwwroot/images/log.png",
+      "PackagePath": "staticwebassets/images/log.png"
+    },
+    {
+      "Id": "/home/stive-junior/ICT4D/wwwroot/images/logo.png",
+      "PackagePath": "staticwebassets/images/logo.png"
+    },
+    {
+      "Id": "/home/stive-junior/ICT4D/wwwroot/images/pass.png",
+      "PackagePath": "staticwebassets/images/pass.png"
+    },
+    {
+      "Id": "/home/stive-junior/ICT4D/wwwroot/images/photo.png",
+      "PackagePath": "staticwebassets/images/photo.png"
+    },
+    {
+      "Id": "/home/stive-junior/ICT4D/wwwroot/images/prof.png",
+      "PackagePath": "staticwebassets/images/prof.png"
+    },
+    {
+      "Id": "/home/stive-junior/ICT4D/wwwroot/images/ue.png",
+      "PackagePath": "staticwebassets/images/ue.png"
+    },
+    {
+      "Id": "/home/stive-junior/ICT4D/wwwroot/images/uni.png",
+      "PackagePath": "staticwebassets/images/uni.png"
+    },
+    {
+      "Id": "/home/stive-junior/ICT4D/wwwroot/images/whatsapp.png",
+      "PackagePath": "staticwebassets/images/whatsapp.png"
+    },
+    {
+      "Id": "/home/stive-junior/ICT4D/wwwroot/js/script.js",
+      "PackagePath": "staticwebassets/js/script.js"
+    },
+    {
+      "Id": "obj/Release/net8.0/staticwebassets/msbuild.ICT4D.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj/Release/net8.0/staticwebassets/msbuild.build.ICT4D.props",
+      "PackagePath": "build\\ICT4D.props"
+    },
+    {
+      "Id": "obj/Release/net8.0/staticwebassets/msbuild.buildMultiTargeting.ICT4D.props",
+      "PackagePath": "buildMultiTargeting\\ICT4D.props"
+    },
+    {
+      "Id": "obj/Release/net8.0/staticwebassets/msbuild.buildTransitive.ICT4D.props",
+      "PackagePath": "buildTransitive\\ICT4D.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

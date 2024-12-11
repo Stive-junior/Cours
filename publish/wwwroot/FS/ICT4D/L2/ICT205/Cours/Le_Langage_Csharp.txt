@@ -1,0 +1,66 @@
+
+
+## I. INTRODUCTION
+
+Le langage [C# (C Sharp)] est un langage orienté objet conçu spécifiquement pour le framework .NET. L’équipe de développement de ce langage a été dirigée par Anders Hejlsberg, un informaticien danois qui était également à l’origine de la conception du langage Delphi pour la société Borland.
+
+*Le framework .NET repose sur le CLR (Common Language Runtime), un environnement d'exécution, ainsi qu'une vaste bibliothèque de classes (plus de 200).*
+
+
+## II. LES HÉRITAGES DU LANGAGE C#
+
+[C#] reprend de nombreux éléments de syntaxe du langage C :
+
+!
+[- Structure des instructions similaire] (terminées par un point-virgule) :
+[- Déclaration de variables, affectation, appel de fonction, passage de valeur, opérateurs arithmétiques.]
+[- Les blocs de code] sont délimités par des crochets "{}".
+[- Les commentaires] utilisent les syntaxes : /* commentaire */ et // commentaire.
+- Les structures de contrôle sont identiques à celles du C, telles que [if/else, while, do...while, et for].
+[- La portée des variables] : elle est limitée au bloc dans lequel elles sont déclarées.
+_!
+
+*Note : Une variable peut être définie à n’importe quel endroit dans le code, mais elle doit être définie avant son utilisation.*
+
+## III. LA PROGRAMMATION ORIENTÉE OBJET EN C#
+
+C# est un langage qui prend pleinement en charge la [programmation orientée objet (POO)], permettant la création et la manipulation d'objets à travers des classes. Il repose sur quatre principes fondamentaux de la POO :
+
+[1. Encapsulation :] Regroupement des données et des méthodes dans une même unité, avec une gestion de l'accès aux membres de la classe.
+[2. Héritage :] Permet de créer de nouvelles classes à partir de classes existantes, facilitant la réutilisation du code.
+[3. Polymorphisme :] Capacité à utiliser un même nom pour plusieurs actions, en fonction du contexte.
+[4. Abstraction :] Masquage de la complexité des implémentations et exposition uniquement des détails nécessaires à l'utilisateur.
+
+
+## IV. L’ÉCRITURE DES CLASSES EN C#
+
+En C#, une classe est définie à l'aide du mot-clé [class]. Elle peut contenir des :
+
+[- attributs]
+[- méthodes ]
+[- constructeurs ]
+[- ainsi que des propriétés.]
+
+La syntaxe de base pour définir une classe est la suivante :
+
+!
+[public class NomDeLaClasse]
+[{]
+    // Déclaration des attributs
+    [private int age;]
+    
+    // Constructeur
+    [public NomDeLaClasse(int age)]
+    [{]
+        [this.age = age;]
+    [}]
+
+    // Méthode
+    [public void AfficherAge()]
+    [{]
+        [Console.WriteLine("L'âge est : " + age);]
+    [}]
+[}]
+_!
+
+*Les classes sont des éléments centraux de la programmation orientée objet et permettent une meilleure organisation du code.*

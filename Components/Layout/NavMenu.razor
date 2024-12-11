@@ -1,0 +1,86 @@
+﻿@inherits LayoutComponentBase
+@using Components.Pages
+
+
+
+<div class="top-row ps-3 navbar navbar-dark">
+    <div class="container-fluid">
+
+        <a class="navbar-brand" style="font-size: 13px; color: #cdd4df;text-align: center;"><i class="@iconeMatiere" style="font-size: 3rem;margin-bottom: 3px;"></i><br>@nomMatiere<br><br>
+        @if(!string.IsNullOrEmpty(profMatiere)){
+        <span style="font-family: cursive;font-size: 20px;">M. @profMatiere</span>
+}
+        </a>
+    </div>
+</div>
+
+<div class="nav-scrollable">
+    <nav class="flex-column">
+     
+        @foreach (var chapter in chapters)
+        {
+            <div class="nav-item px-3">
+                
+                <NavLink class="nav-link" 
+                         href="@($"/Fac/{Code}/{nomFiliere}/{niveau}/{codeMatiere}/{choix}/{chapter.nom_tiret}")"
+                        >
+                     <i class="fa fa-book"></i>
+                    @chapter.nom_sans_tiret
+                </NavLink>
+                
+            </div>
+
+        }
+    </nav>
+</div>
+
+@code {
+    [Parameter] public string Code { get; set; } = "";
+    [Parameter] public string nomFiliere { get; set; } = "";
+    [Parameter] public string niveau { get; set; } = "";
+    [Parameter] public string codeMatiere { get; set; } = "";
+    [Parameter] public string choix { get; set; } = "";
+    [Parameter] public string nomChapitre { get; set; } = "";
+    [Parameter] public string nomMatiere { get; set; } = "";
+    public string profMatiere { get; set; } = "";
+
+    public string iconeMatiere = "";
+    public List<(string Code, string nomFiliere, string nomChapitre, string choix, string niveau, string codeMatiere)> parametre { get; set; } = new List<(string Code, string nomFiliere, string nomChapitre, string choix, string niveau, string codeMatiere)>();
+
+    [Parameter] public List<(string nom_sans_tiret, string nom_tiret)> chapters { get; set; } = new List<(string nom_sans_tiret, string nom_tiret)>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await Task.Delay(1);
+        parametre.Add(Chapitre.parametre.FirstOrDefault());
+
+        Code = parametre.FirstOrDefault().Code;
+        nomFiliere = parametre.FirstOrDefault().nomFiliere;
+        niveau = parametre.FirstOrDefault().niveau;
+        codeMatiere = parametre.FirstOrDefault().codeMatiere;
+        nomMatiere = Niveau.mat.FirstOrDefault(x => x.codeMatiere == codeMatiere).nomMatiere;
+        choix = parametre.FirstOrDefault().choix;
+        nomChapitre = parametre.FirstOrDefault().nomChapitre;
+        iconeMatiere = Niveau.mat.FirstOrDefault(x => x.codeMatiere == codeMatiere).iconeMatiere;
+        profMatiere = Niveau.mat.FirstOrDefault(x => x.codeMatiere == codeMatiere).nomProf;
+
+        string directoryPath = Path.Combine("wwwroot", parametre.FirstOrDefault().Code, parametre.FirstOrDefault().nomFiliere, parametre.FirstOrDefault().niveau, parametre.FirstOrDefault().codeMatiere, parametre.FirstOrDefault().choix ?? "");
+
+        if (Directory.Exists(directoryPath))
+        {
+            chapters = Directory.GetFiles(directoryPath)
+                .Select(file => Path.GetFileNameWithoutExtension(file)) 
+                .Select(filename =>
+                {
+                    string nom_sans_tiret = Matiere.RetirerSeparateurs(filename);
+                    string nom_tiret = filename;
+                    return (nom_sans_tiret, nom_tiret);
+                })
+                .ToList();
+        }
+        else
+        {
+            chapters.Clear();
+        }
+    }
+}

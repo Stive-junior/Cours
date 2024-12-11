@@ -1,0 +1,318 @@
+
+.faculty-container{
+   display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    height: 60vh;
+}
+
+.faculty-selection{
+    display: flex;
+    justify-content: space-around;
+    width: 80%;
+}
+
+.p-fac{
+
+    font-size: 12px;
+    margin-left:10rem;
+}
+
+.sous-logo{
+ display: flex;
+ align-items: center;
+ flex-direction: column;
+}
+
+
+.faculty-card {
+    
+    background: linear-gradient(to right, rgb(48, 49, 51), rgb(44, 62, 80), rgb(24, 23, 23), rgb(24, 23, 23));
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    text-align: center;
+    width: 30%;
+    cursor: pointer;    
+    border: 1px solid #181717;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+
+}
+
+
+
+.btn-retour{
+
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;    
+    border: 0.5px solid #181717;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: center;
+    width: 70px;
+    position: relative;
+
+    text-decoration: none;
+    color:#181717;
+  height: 53px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+
+
+}
+.btn-retour i{
+    margin-top: 2px;
+    font-size: 20px;  
+
+}
+
+.btn-retour:hover {
+    background-color: #181717;
+    color: white;
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.faculty-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.faculty-frame {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+        border-radius: 5px;
+        padding: 10px;
+        margin: 0;
+    box-shadow: 10px 10px 12px rgba(0, 0, 0, 0.2);
+    border: 0.5px solid rgba(0, 0, 0, 0.534);
+    background-color: #fff;
+
+}
+
+.faculty-image {
+    width: 250px;
+    height: 60px;
+    margin-bottom: 5px;
+
+    object-fit: contain;
+
+}
+
+.faculty-abbreviation {
+    font-size: 15px;
+    font-weight: bold;
+    color: #303133;
+    margin-top: 5px;
+}
+
+.faculty-name {
+    font-size: 14px;
+    color: #5f6a6b;
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Section de sélection de la filière */
+.filiere-selection {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 0px;
+    text-align: center;
+
+}
+
+.filiere-card {
+
+background: linear-gradient(to right, rgb(48, 49, 51), rgb(44, 62, 80), rgb(24, 23, 23), rgb(24, 23, 23));
+    padding: 20px;
+    background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  text-align: center;
+  width: 93%;
+  cursor: pointer;
+  border: 1px solid #181717;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  margin: 13px 12px;
+
+}
+
+.cour-card{
+
+    
+background: linear-gradient(to right, rgb(48, 49, 51), rgb(44, 62, 80), rgb(24, 23, 23), rgb(24, 23, 23));
+
+text-decoration: none;
+  width: auto;
+  height: max-content;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 0.5rem;
+  text-align: center;
+
+  cursor: pointer;
+  border: 1px solid #181717;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  margin: 13px 12px;
+
+}
+
+.filiere-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.titre{
+    text-align: center;
+    font-weight: bold;
+}
+.icone{
+
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 1);
+    font-size: 0.9rem;
+    margin-left: 10px;
+    width: 40px;
+    color: #181717;
+    border-radius: 5px;
+    border: 0.5px solid #181717;
+    cursor: pointer;
+     transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.icone:hover{
+    color: white;
+    background-color: #181717;
+    transform: scale(1.1);
+    box-shadow: 0px 2px 8px rgb(252, 252, 252);
+}
+
+.filiere-name {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 15px;
+    color: #303133;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.filiere-image i {
+        color: #181717;
+        font-size: 3rem;
+        transition: transform 0.3s, box-shadow 0.3s;
+}
+
+
+/* Section de sélection des matières */
+.matieres-selection {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.matiere-card {
+    background-color: #fff;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.matiere-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.matiere-image {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+}
+
+.matiere-name {
+    font-size: 17px;
+    font-weight: bold;
+    margin-top: 0px;
+    color: #181717;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-style: italic;
+}
+
+.professor-name-container{
+    position:relative; 
+    margin-bottom: 20px; 
+    right: 45px;
+}
+
+.prof-name{
+    color: #181717; 
+    font-size: 15px;
+    position:relative; 
+    margin-bottom: 10px;
+    right: 0px; 
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#error{
+    font-size: 3rem;margin-bottom: 30px;color:rgb(203, 21, 21);
+}
+
+/* Chapitre Selection */
+.chapitre-selection {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.chapitre-card {
+    background-color: #fff;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.chapitre-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px;
+}
+
+
+.chapitre-image {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+}
+
+.chapitre-name {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 10px;
+    color: #2C3E50;
+}

@@ -1,0 +1,103 @@
+@page "/Fac/{Code}/{nomFiliere}/{niveau}/{codeMatiere}/{choix}"
+@inject NavigationManager NavigationManager
+@inject IJSRuntime JSRuntime
+@using Components.Pages
+@using System.IO
+
+
+
+<Entete nomFiliere=@nomFiliere icone=@icone NomFaculte=@Code niveau=@niveau codeMatiere=@codeMatiere />
+
+@if (fichiers != null && fichiers.Any())
+{
+    <div class="filiere-selection" style="margin-bottom: 5px;display:grid;height:20rem;">
+        @foreach (var item in fichiers)
+        {
+
+    iconeMatiere = Niveau.mat.FirstOrDefault(x => x.codeMatiere == codeMatiere).iconeMatiere;
+
+
+
+            var fichierSansSeparateur= RetirerSeparateurs(item);
+
+            <div class="cour-card">
+                <div class="faculty-frame">
+                    
+                    <p class="role-text" style="font-size: 0.9rem;color:#181717;">chapitre @compteur</p>
+                    <div style="font-size: 1rem;text-align: center;color:#181717;font-style: italic;">
+                        <p class="matiere-name"> @fichierSansSeparateur </p>
+
+                        <div style="display: flex;justify-content: space-between;">
+                            
+                            <a href="@($"/Fac/{Code}/{nomFiliere}/{niveau}/{codeMatiere}/{choix}/{item}")" 
+                               class="icone" title="@($"Voir le chapitre {compteur} de {codeMatiere}")">
+                                <i class="fas fa-eye"></i>
+                            </a>  
+                           
+                            <button class="icone" 
+                                    title="@($"Télecharger le chapitre {compteur} de {codeMatiere} (Pdf)")" 
+                                    onclick="@($"downloadPdf('{item}')")">
+                                <i class="fas fa-download"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            compteur++;
+        }
+    </div>
+}
+else
+{
+    <div style="margin-bottom: 10px;display:grid;height:20rem;">
+        <NavLink class="filiere-card" href="" style="text-decoration: none;width: auto;height: max-content;">
+            <div class="faculty-frame">
+                <div class="filiere-image">
+                    <i class="fas fa-exclamation-triangle" id="error"></i>
+                </div>
+                <p class="matiere-name">Aucun <strong style="color:green;">@choix</strong> de @codeMatiere n'a été trouvé. Veuillez rafraîchir la page♻️.</p>
+            </div>
+        </NavLink>
+    </div>   
+}
+
+<Footer />
+
+@code {
+    public string? icone { get; set; }
+    [Parameter] public string nomFiliere { get; set; } = "";
+    [Parameter] public string niveau { get; set; } = "";
+    [Parameter] public string Code { get; set; } = "";
+    [Parameter] public string codeMatiere { get; set; } = "";
+    [Parameter] public string? choix { get; set; } = "";
+    public static string iconeMatiere{get;set;} = "";
+    public int compteur { get; set; } = 1;
+
+    public List<string> fichiers { get; set; } = new List<string>();
+
+    public static string RetirerSeparateurs(string fileName)
+    {
+        // Retirer les séparateurs pour afficher un nom de fichier plus lisible
+        return fileName.Replace("_", " ").Replace("/", " ");
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        icone = Niveau.icone;
+
+        await Task.Delay(0);
+        string directoryPath = Path.Combine("wwwroot", Code, nomFiliere, niveau, codeMatiere, choix ?? "");
+
+        if (Directory.Exists(directoryPath))
+        {
+            fichiers = Directory.GetFiles(directoryPath)
+                .Select(file => Path.GetFileNameWithoutExtension(file))  
+                .ToList();
+        }
+        else
+        {
+            Directory.CreateDirectory(directoryPath);
+            fichiers.Clear();
+        }
+    }
+}

@@ -1,0 +1,152 @@
+
+## 1. CRÉER UN PROJET « CONSOLE APP »
+
+Pour créer une application console en utilisant .NET sur Ubuntu, suivez les étapes ci-dessous.
+
+### 1.1 Installer .NET SDK sur Ubuntu
+
+Avant de commencer à créer un projet .NET, vous devez installer le [.NET SDK]. Ouvrez votre terminal et exécutez les commandes suivantes :
+
+
+*sudo apt update*
+*sudo apt install -y dotnet-sdk-7.0*
+*dotnet --version*          Pour voir la version installee
+
+Remplacez ["7.0"] par la dernière version disponible
+
+
+### 1.2 Créer le projet Console App
+
+Une fois le SDK installé, vous pouvez créer une application console. Utilisez la commande [dotnet new] pour créer un projet de type "console":
+
+
+*dotnet new console -n MonApplicationConsole*
+*cd MonApplicationConsole*
+
+
+Cette commande va :
+- Créer un dossier nommé [MonApplicationConsole].
+- Initialiser un projet d'application console dans ce dossier.
+
+### 1.3 Vérification de la structure du projet
+
+Le projet aura la structure suivante :
+
+
+[MonApplicationConsole/]
+[├── Program.cs]
+[├── MonApplicationConsole.csproj]
+[└── obj/]
+
+
+[- Program.cs ]: C'est le fichier principal contenant le code de démarrage de votre application.
+[- MonApplicationConsole.csproj ]: Ce fichier contient les informations de configuration du projet (comme la version de .NET, les dépendances, etc.).
+
+## 2. ANALYSER L’ENVIRONNEMENT DE DÉVELOPPEMENT
+
+Une fois le projet créé, vous pouvez examiner le code généré dans le fichier [Program.cs].
+
+Voici un exemple du contenu généré par défaut dans [Program.cs]:
+
+
+!
+[using System;]
+
+[class Program]
+[{]
+    [static void Main(string[] args)]
+    [{]
+[Console.WriteLine("Hello, World!")];
+[}]
+[}]
+_!
+
+
+### 2.1 Explication du code
+
+[- using System;] : C'est la directive qui permet d'utiliser les classes et fonctionnalités de la bibliothèque de base .NET, comme `Console`.
+[- class Program] : La classe principale de l'application.
+[- static void Main(string[] args) ]: La méthode `Main` est le point d'entrée de toute application console. C'est ici que l'exécution commence.
+[- Console.WriteLine("Hello, World!"); ]: Cette ligne écrit le texte `"Hello, World!"` dans la console.
+
+## 3. ÉCRIRE DU TEXTE DANS NOTRE APPLICATION
+
+Pour écrire du texte dans la console, vous utilisez la méthode <Console.WriteLine()>. Voici quelques exemples :
+
+### 3.1 Afficher du texte statique
+
+Modifiez [Program.cs] pour afficher du texte spécifique :
+
+!
+[using System;]
+
+[class Program]
+[{]
+    [static void Main(string[] args)]
+    [{]
+        [Console.WriteLine("Bienvenue dans mon application console .NET!");]
+    [}]
+[}]
+_!
+### 3.2 Demander une entrée de l'utilisateur
+
+Si vous souhaitez demander à l'utilisateur de saisir du texte, vous pouvez utiliser la méthode [Console.ReadLine()].
+
+Voici un exemple qui demande à l'utilisateur de saisir son nom et l'affiche :
+
+!
+[using System;]
+
+[class Program]
+[{]
+    [static void Main(string[] args)]
+    [{]
+       [ Console.Write("Entrez votre nom : ");]
+       [ string nom = Console.ReadLine();]
+       [Console.WriteLine($"Bonjour, {nom}!");]
+    [}]
+}}}!
+
+## 4. L’EXÉCUTION DU PROJET
+
+### 4.1 Compiler et exécuter le projet
+
+Après avoir écrit votre code, vous pouvez compiler et exécuter votre application console. Dans le terminal, exécutez les commandes suivantes :
+
+
+<dotnet build>  
+*Cette commande compile votre projet*
+<dotnet run>    
+*Cette commande exécute votre application*
+
+
+### 4.2 Résultat
+
+Si vous avez utilisé le code d'exemple [Bonjour, {nom}!], l'exécution devrait vous demander de saisir votre nom, puis afficher un message de bienvenue.
+
+!
+[Entrez votre nom : Alice]
+[Bonjour, Alice]
+_!
+
+
+## 5. Conseils supplémentaires
+
+[- Accéder aux fichiers de sortie] : Par défaut, les fichiers binaires générés par `dotnet build` sont stockés dans le dossier `bin/Debug/net7.0/` (ou une version différente selon la configuration du projet).
+[- Exécuter en mode Release] : Pour générer un fichier exécutable optimisé, vous pouvez utiliser `dotnet publish` :
+  
+  <dotnet publish -c Release>
+  *Cela génère une version compilée de l'application pour la distribution.*
+
+## Conclusion
+
+Ces étapes vous montrent comment créer une application console de base avec .NET sur Ubuntu. Vous avez appris à :
+
+!
+[- Créer un projet console.]
+[- Examiner le code généré.]
+[- Ajouter du texte statique et dynamique.]
+[- Compiler et exécuter votre application.]
+_!
+
+Cela constitue la base de nombreuses applications console que vous pouvez créer avec .NET.

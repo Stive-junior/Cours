@@ -1,0 +1,16 @@
+
+@inject IJSRuntime JS
+
+<div class="back-button-container">
+    <button class="back-button" @onclick="GoBack">
+        <i class="fas fa-arrow-left"></i> Retour
+    </button>
+</div>
+
+@code {
+
+    private async Task GoBack()
+    {
+        await JS.InvokeVoidAsync("goBack");
+    }
+}   

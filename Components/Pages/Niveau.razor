@@ -1,0 +1,258 @@
+@page "/Fac/{Code}/{nomFiliere}/{niveau}"
+
+<Entete nomFiliere=@nomFiliere icone=@icone NomFaculte=@Code niveau=@niveau/>
+
+
+
+   @if (mat != null && mat.Any())
+    {
+
+            <div class="filiere-selection">
+
+        @foreach (var matiere in mat)
+        {
+     <NavLink class="filiere-card" href="@($"/Fac/{Code}/{nomFiliere}/{niveau}/{matiere.codeMatiere}")" title="@($"Acceder aux cours de {matiere.codeMatiere}")" style="text-decoration: none;">
+            <div class="faculty-frame">
+
+@if (!string.IsNullOrEmpty(matiere.nomProf)) 
+{
+
+    <div class="professor-name-container" >
+
+        <span class="prof-name">M. @matiere.nomProf </span>
+    </div>
+}
+
+
+
+                <div class="filiere-image">
+                    <i class="@matiere.iconeMatiere" style="font-size: 3rem;margin-bottom: 30px;"></i>
+                                      
+                                    
+
+                   
+                </div>
+                    <p class="matiere-name">@matiere.codeMatiere - @matiere.nomMatiere</p>
+            </div>
+ 
+            </NavLink>
+    
+            }
+    </div>
+            }
+            
+else
+{
+    
+<div style="margin-bottom: 10px;display:grid;height:20rem;">
+             <NavLink class="filiere-card" href="" style="text-decoration: none;;width: auto;height: max-content;">
+            <div class="faculty-frame">
+
+
+                <div class="filiere-image">
+                    <i class="fas fa-exclamation-triangle" id="error"></i>
+                                      
+                                    
+                </div>
+                    <p class="matiere-name">Les matières pour le niveau @niveau ne sont pas disponibles pour le moment.</p>
+            </div>
+ 
+            </NavLink>
+</div>   
+}
+            
+
+    
+<Footer />
+
+
+
+
+@code{
+    public static string? icone { get; set; }
+    [Parameter] public string nomFiliere { get; set; } = "";
+    [Parameter] public string? niveau { get; set; }
+    [Parameter] public string? Code { get; set; }
+    public static string? iconeMatiere {get;set;}
+
+    public List<(string niveau, List<(string codeMatiere, string nomMatiere, string nomProf, string iconeMatiere)> mat)>? Matiere { get; set; }
+    public static List<(string codeMatiere, string nomMatiere, string nomProf, string iconeMatiere)> mat { get; set; } = new List<(string codeMatiere, string nomMatiere, string nomProf, string iconeMatiere)>();
+    public static bool g { get; set; }
+    public List<(string icone, bool pro)>? filieres { get; set; }
+
+    protected override void OnInitialized()
+    {
+        
+        filieres = Entete.filiere[nomFiliere];
+      
+        
+
+        if (filieres != null && filieres.Any())
+        {
+            var item = filieres.FirstOrDefault();
+            if (item != default)
+            {
+                icone = item.icone;
+            }
+        }
+
+
+        var matiere = new Dictionary<string, List<(string niveau, List<(string codeMatiere, string nomMatiere, string nomProf, string iconeMatiere)> mat)>>{
+           
+            { "Informatique", new List<(string, List<(string,string,string,string)>)> { 
+                ("L1", new List<(string, string,string,string)>{}),
+                ("L2", new List<(string, string,string,string)>{}),
+                ("L3", new List<(string, string,string,string)>{}),
+                ("M1", new List<(string, string,string,string)>{}),
+                ("M2", new List<(string, string,string,string)>{}),
+                ("Doc", new List<(string, string,string,string)>{}) } },
+                
+            { "Mathématiques", new List<(string, List<(string,string,string,string)>)> { 
+                ("L1", new List<(string, string,string,string)>{}),
+                ("L2", new List<(string, string,string,string)>{}),
+                ("L3", new List<(string, string,string,string)>{}),
+                ("M1", new List<(string, string,string,string)>{}),
+                ("M2", new List<(string, string,string,string)>{}),
+                ("Doc", new List<(string, string,string,string)>{})  }},
+
+            { "Physique", new List<(string, List<(string,string,string,string)>)> { 
+                ("L1", new List<(string, string,string,string)>{}),
+                ("L2", new List<(string, string,string,string)>{}),
+                ("L3", new List<(string, string,string,string)>{}),
+                ("M1", new List<(string, string,string,string)>{}),
+                ("M2", new List<(string, string,string,string)>{}),
+                ("Doc", new List<(string, string,string,string)>{})  } },
+
+            { "Chimie", new List<(string, List<(string,string,string,string)>)> { 
+                ("L1", new List<(string, string,string,string)>{}),
+                ("L2", new List<(string, string,string,string)>{}),
+                ("L3", new List<(string, string,string,string)>{}),
+                ("M1", new List<(string, string,string,string)>{}),
+                ("M2", new List<(string, string,string,string)>{}),
+                ("Doc", new List<(string, string,string,string)>{})  } },
+
+            { "Biosciences", new List<(string, List<(string,string,string,string)>)> { 
+                ("L1", new List<(string, string,string,string)>{}),
+                ("L2", new List<(string, string,string,string)>{}),
+                ("L3", new List<(string, string,string,string)>{}),
+                ("M1", new List<(string, string,string,string)>{}),
+                ("M2", new List<(string, string,string,string)>{}),
+                ("Doc", new List<(string, string,string,string)>{})  } },
+
+            { "Geosciences", new List<(string, List<(string,string,string,string)>)> { 
+                ("L1", new List<(string, string,string,string)>{}),
+                ("L2", new List<(string, string,string,string)>{}),
+                ("L3", new List<(string, string,string,string)>{}),
+                ("M1", new List<(string, string,string,string)>{}),
+                ("M2", new List<(string, string,string,string)>{}),
+                ("Doc", new List<(string, string,string,string)>{})  } },
+
+            { "ICT4D", new List<(string, List<(string,string,string,string)>)> { 
+                ("L1", new List<(string, string,string,string)>{
+
+    ("ICT101", "Introduction to Business Information", "", "fas fa-briefcase"),
+    ("ICT103", "Introduction to Programming", "", "fas fa-code"),
+    ("ICT105", "Introduction to algorithms", "", "fas fa-cogs"),
+    ("ICT107", "Mathematics for computer science", "", "fas fa-square-root-alt"),
+    ("ICT109", "Discrete Mathematics", "", "fas fa-calculator"),
+    ("ICT111", "Computer and Logic Essentials", "", "fas fa-microchip"),
+    ("ICT102", "Object-Oriented Programming", "", "fas fa-laptop-code") }),
+
+                ("L2", new List<(string, string,string,string)>{
+
+    ("ICT201", "Introduction to Software Engineering", "MOYOU", "fas fa-wrench"),
+    ("ICT203", "Databases Systems", "SEVANY", "fas fa-database"),
+    ("ICT205", "Introduction to Programming In .NET", "CACTCHA", "fab fa-windows"),
+    ("ICT207", "Software Development in Java I", "MONTHE", "fab fa-java"),
+    ("ICT213", "Introduction to Computer Security and Risk Management", "MOSSEBO", "fas fa-shield-alt"),
+    ("ICT215", "Introduction to Computer Networking", "VIDEME", "fas fa-network-wired"),
+    ("ICT217", "Software Engineering", "NKOUANDOU", "fas fa-tools"),
+    ("FRAN203", "Francais II", "BIYONG", "fas fa-book"),
+    ("ENG203", "English II", "MUSIMA", "fas fa-book-open") }),
+
+
+                ("L3", new List<(string, string,string,string)>{}),
+                ("M1", new List<(string, string,string,string)>{}),
+                ("M2", new List<(string, string,string,string)>{}),
+                ("Doc", new List<(string, string,string,string)>{})  } },
+
+            { "Biologie", new List<(string, List<(string,string,string,string)>)> { 
+                ("L1", new List<(string, string,string,string)>{}),
+                ("L2", new List<(string, string,string,string)>{}),
+                ("L3", new List<(string, string,string,string)>{}),
+                ("M1", new List<(string, string,string,string)>{}),
+                ("M2", new List<(string, string,string,string)>{}),
+                ("Doc", new List<(string, string,string,string)>{})  } },
+
+            { "Microbiologie", new List<(string, List<(string,string,string,string)>)> { 
+                ("L1", new List<(string, string,string,string)>{}),
+                ("L2", new List<(string, string,string,string)>{}),
+                ("L3", new List<(string, string,string,string)>{}),
+                ("M1", new List<(string, string,string,string)>{}),
+                ("M2", new List<(string, string,string,string)>{}),
+                ("Doc", new List<(string, string,string,string)>{}) } },
+
+            { "Pédagogie", new List<(string, List<(string,string,string,string)>)> { 
+                ("L1", new List<(string, string,string,string)>{}),
+                ("L2", new List<(string, string,string,string)>{}),
+                ("L3", new List<(string, string,string,string)>{}),
+                ("M1", new List<(string, string,string,string)>{}),
+                ("M2", new List<(string, string,string,string)>{}),
+                ("Doc", new List<(string, string,string,string)>{}) } },
+
+            { "Psychopédagogie", new List<(string, List<(string,string,string,string)>)> { 
+                ("L1", new List<(string, string,string,string)>{}),
+                ("L2", new List<(string, string,string,string)>{}),
+                ("L3", new List<(string, string,string,string)>{}),
+                ("M1", new List<(string, string,string,string)>{}),
+                ("M2", new List<(string, string,string,string)>{}),
+                ("Doc", new List<(string, string,string,string)>{}) } },
+
+            { "Éducation spécialisée", new List<(string, List<(string,string,string,string)>)> { 
+                ("L1", new List<(string, string,string,string)>{}),
+                ("L2", new List<(string, string,string,string)>{}),
+                ("L3", new List<(string, string,string,string)>{}),
+                ("M1", new List<(string, string,string,string)>{}),
+                ("M2", new List<(string, string,string,string)>{}),
+                ("Doc", new List<(string, string,string,string)>{})  } },
+
+            { "Lettres Modernes", new List<(string, List<(string,string,string,string)>)> { 
+                ("L1", new List<(string, string,string,string)>{}),
+                ("L2", new List<(string, string,string,string)>{}),
+                ("L3", new List<(string, string,string,string)>{}),
+                ("M1", new List<(string, string,string,string)>{}),
+                ("M2", new List<(string, string,string,string)>{}),
+                ("Doc", new List<(string, string,string,string)>{})  } },
+
+            { "Philosophie", new List<(string, List<(string,string,string,string)>)> { 
+                ("L1", new List<(string, string,string,string)>{}),
+                ("L2", new List<(string, string,string,string)>{}),
+                ("L3", new List<(string, string,string,string)>{}),
+                ("M1", new List<(string, string,string,string)>{}),
+                ("M2", new List<(string, string,string,string)>{}),
+                ("Doc", new List<(string, string,string,string)>{})  }},
+
+            { "Histoire", new List<(string, List<(string,string,string,string)>)> { 
+                ("L1", new List<(string, string,string,string)>{}),
+                ("L2", new List<(string, string,string,string)>{}),
+                ("L3", new List<(string, string,string,string)>{}),
+                ("M1", new List<(string, string,string,string)>{}),
+                ("M2", new List<(string, string,string,string)>{}),
+                ("Doc", new List<(string, string,string,string)>{}) }}
+        };
+
+
+        if (matiere.ContainsKey(nomFiliere))
+        {
+            var filiereMatiere = matiere[nomFiliere];
+            var niveauMatiere = filiereMatiere.FirstOrDefault(x => x.niveau == niveau);
+
+            if (niveauMatiere != default)
+            {
+                mat = niveauMatiere.mat;
+                
+                
+            }
+        }
+    }
+}

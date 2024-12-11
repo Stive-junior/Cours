@@ -1,0 +1,107 @@
+## Qu’est-ce que le framework  .NET ?
+D’après Microsoft, le [Framework .NET] est une nouvelle plateforme informatique qui simplifie le développement d’application dans l’environnement fortement distribuer d’internet.
+
+### 1. Les principaux objectifs : 
+
+Le [Framework .NET] est conçue pour remplir les objectifs suivants :
+    • Fournir un environnement cohérent de programmation oriente objet. Que le code soit stocké et exécuter localement, mais distribuer sur internet ou exécuter à distance.
+    • Fournir un environnement qui garantie l’exécution sécuriser du code.
+    • Fournir au programmeur un environnement cohérent qui lui permet de développer une grande variété de type d’application (comme les application Windows, les services Windows, les applications embarquer, les application web…)
+    • Générer toute les communication a partir des norme d’industrie pour s’assurer que le code baser sur le Framework .NET peut s’intégrer a n’importe quel autre code 
+
+### 2. Découvrir l’historique de .NET
+
+Microsoft a lancé le [Framework .NET] en 2002 en tant que Framework révolutionnaire pour la création d’application Windows. Il comporte 2 parties principal :
+    • [Common Langage Runtime] CLR : Il gère l’exécution du code écrit dans différent langage .NET tel que (C#, VB.NET, F#, Iron Python, Iron Ruby). Il fournie des services tel que la gestion de la mémoire, la sécurité des types, la gestion des exceptions, et la gestion des threads
+    • [Framework Class Library] FCL : Il s’agit d’une collection complète de classe, d’interface et de type de valeur réutilisable que vous utilisez pour crée vos applications. Il offre un large éventail de fonctionnalité tel que (l’accès aux données, les entrées/sorties des données, la gestion des fichiers et la sécurité).
+
+La dernière [version] de [.NET Framework] est la version 4.8.1 publier en Aout 2022, la dernière version majeur date de Avril 2019.
+
+### 3. Tableau récapitulatif des versions de .NET et VS CODE
+
+|| .NET Framework | Version Année   | VS Version    ||
+| 4.8.1          | Aout 2022       |      3.6       |
+| 4.8            | 18-04-2019      |                |
+| 4.7.2          | 30-04-2018      |                |
+| 4.7.1          | 17-10-2017      |                |
+| 4.7            | 11-04-2017      |                |
+| 4.6.2          | 02-08-2016      |                |
+| 4.6.1          | 30-11-2015      |                |
+| 4.6            | 29-07-2015      |        6.7     |
+| 4.5.2          | 05-05-2014      |                |
+| 4.5.1          | 15-01-2012      |                |
+| 4.5            | 09-10-2012      |                |
+| 4              | 12-04-2010      |                |
+| 3.5            | 10-12-2007      |                |
+| 3              | 21-11-2006      |                |
+| 2              | 12-02-2006      |                |
+| 1.1            | 10-07-2003      |                |
+| 1.0            | 15-04-2002      |                |
+|_
+
+Dans le début des années 2000, .NET framework vient unifier la manière de développer les applications Windows. Avec sa première version en 2002, il apporte la possibilité de développer les applications web avec ASP.NET .
+On va avoir:
+   [ • Des web services en 2005 ]
+   [ • Des applications bureau en 2006 ]
+   [ • En 2009 on développe des applications Web en utilisant le pattern MVC]
+   [ •  Des API Web en 2013 ]
+
+	Le problème qu’on va rencontrer est que .NET framework est très lié a Windows, il est lourd et est pratiquement impossible de le faire évoluer en profondeur. Et dans un monde ou on héberge des applications dans les conteneurs, Microsoft devait réagit, c’est ce qu’il ont fait en 2016 en annonçant l’arrivée d’un nouveau framework plus léger, multiplate-forme , plus moderne qui répond au nom de [.NET CORE].
+Au début des années 2016, .NET CORE est assez difficile a utiliser et avec le temps le rythme de livraison plus soutenu et l’arrivée de [.NET CORE 3.1] va venu répondre a la majorité des problèmes.
+	Un nouveau problème va se poser car il y’a deux versions de framework qui cohabitent et évoluent sepparemment. En 2019, Microsoft annonce que .NET CORE est suffisamment mature, suffisamment complet, et qu’a de 2020, on ne parlera plus de .NET framework ou de .NET CORE mais de .NET tout simplement, il y aura désormais une version chaque année a commencer par [.NET 5].
+
+
+   ### 2. Utiliser .NET pour différents types de projet
+Si on regarde la vue d’ensemble de .NET aujourd’hui il est possible de faire : 
+
+|| Développement | Projet  ||
+|Bureau          | .NET MAUI ,BLAZOR| 
+| Mobile         |.NET MAUI , XAMARIM   |
+| Web            | ASP.NET , BLAZOR|
+| Cloud          | AZUR      |
+| IOT des architectures | ARM32 , ARM64     |
+| intelligence Artificielle         | ML.NET , .NET FOR APACHE SPARK      |
+|_
+
+
+### 3. Quels sont les langages disponibles
+Il existe 3 langages au tour de .NET pour le développement des projets :
+    • [C# ]: Pour tous les usages il est issu du C le rendant plus abordable.
+    • [Le VB.NET] : pour les anciens qui faisait du VB ou VBA.
+    • [F# ]: pour ceux qui veulent faire du Machine Learning ou pour ceux qui veulent de la manipulation de données 
+
+
+Vous avez des ficher :
+
+[ • .CS pour C# ] 
+[ • .VB pour VB.NET ]
+[ • .FS pour F#. ]
+ 
+ 
+  Ces fichiers sont précompilé a l’aide de chaque compilateur du langage en langage intermédiaire appelé MSIL [(Microsoft Intermediate Language/ Common Itermediate Language)> et qui sont au format .EXE ou .DLL, l’ensemble va être charger dans le CLR(Common Language Runtime)]  et c’est lui qui va exécuter un processus appeler compilation JIT(Just In Time) c’est a ceux moment que le langage intermédiaire est transformer en code machine pour qu’il puissent être interpréter par la machine qui l’héberge.
+
+
+### 4. Présentation de Visual Studio
+
+    ## Comment télécharger Visual Studio Community 2022
+Pour le faire il suffit de saisir le mot clé installer [Visual Studio community 2022] dans un moteur de recherche et de cliquer en suite sur le lien de téléchargement proposer : https://visualstudio.microsoft.com/fr/vs/community/, puis cliquer sur le bouton télécharger.
+    $VS1.jpg$
+    $VS2.jpg$
+
+    ## Comment installer Visual Studio Community
+Pour installer Visual Studio Community 2022 il suffit de double cliquer sur le setup précédemment télécharger, une fenêtre appeler [Visual Studio Community Installer] va s’afficher. Dans cette fenêtre nous allons sélectionner les composant suivant : Développement web et ASP.NET , développement net multiplateforme AUI, développement .NET desktop.
+   $VS3.jpg$
+   $VS4.jpg$
+
+    ## Présentation de Visual Studio Community 2022
+
+Au démarrage de Visual studio 2022, l’on voit un splash screen (écran fugitif ou fenêtre d’attente). C’est la toute première fenêtre affiché par un logiciel faisant généralement office d’écran de chargement, cette fenêtre incite l’utilisateur a patienter pendant le chargement et l’installation des composants du logiciel tout en lui apportant diverses informations comme:
+
+[→ le nom de l’éditeur]
+[→ le logo de l’éditeur]
+[→ les droits d’auteur associés au logiciel]
+[→ la version et l’état du chargement du logiciel]
+
+$VS5.jpg$
+
+*Après cette première fenêtre peut apparaître une deuxième fenêtre qu’on appelle la fenêtre de base de visual studio qui permet de créer un nouveau projet ou d’ouvrir un projet existant.*

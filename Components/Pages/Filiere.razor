@@ -1,0 +1,110 @@
+@page "/Fac/{Code}/{nomFiliere}"
+
+<PageTitle>@nomFiliere</PageTitle>
+
+<ICT4D.Components.Pages.Entete nomFiliere=@nomFiliere icone=@icone NomFaculte=@Code />
+
+@code{
+    [Parameter]
+    public string nomFiliere { get; set; } = "";
+    public string? icone { get; set; }="";
+    public List<(string icone, bool pro)>? filieres { get; set; }
+    public List<(string niveau,string code)> niveau {get;set;} = new List<(string niveau, string code)>();
+    [Parameter]
+    public string? Code { get; set; } = "";
+    public bool estPro {get;set;} = true;
+
+
+
+    protected override void OnInitialized()
+    {
+
+
+
+        var filiere = new Dictionary<string, List<(string, bool)>>
+        {
+            { "Informatique", new List<(string, bool)> { ("fas fa-laptop", false) } },
+            { "Mathématiques", new List<(string, bool)> { ("fas fa-calculator", false) } },
+            { "Physique", new List<(string, bool)> { ("fas fa-cogs", false) } },
+            { "Chimie", new List<(string, bool)> { ("fas fa-flask", false) } },
+            { "Biosciences", new List<(string, bool)> { ("fas fa-biohazard", false) } },
+            { "Geosciences", new List<(string, bool)> { ("fas fa-globe", false) } },
+            { "ICT4D", new List<(string, bool)> { ("fas fa-user-tie", true) } },
+            { "Biologie", new List<(string, bool)> { ("fas fa-leaf", false) } },
+            { "Microbiologie", new List<(string, bool)> { ("fas fa-virus", false) } },
+            { "Pédagogie", new List<(string, bool)> { ("fas fa-chalkboard-teacher", false) } },
+            { "Psychopédagogie", new List<(string, bool)> { ("fas fa-user-graduate", false) } },
+            { "Éducation spécialisée", new List<(string, bool)> { ("fas fa-users-cog", false) } },
+            { "Lettres Modernes", new List<(string, bool)> { ("fas fa-book", false) } },
+            { "Philosophie", new List<(string, bool)> { ("fas fa-lightbulb", false) } },
+            { "Histoire", new List<(string, bool)> { ("fas fa-history", false) } }
+        };
+
+        filieres = filiere[nomFiliere];
+
+
+        if (filieres != null && filieres.Any())
+        {
+            var item = filieres.FirstOrDefault();
+            if (item != default)
+            {
+                icone = item.icone;
+
+                    niveau = new List<(string niveau, string code)>{
+                        ("L1","Licence 1"),
+                        ("L2","Licence 2"),
+                        ("L3","Licence 3"),
+                        ("M1","Master 1"),
+                        ("M2","Master 2")
+
+                    };
+
+                                    if (!item.pro){
+                                        estPro = false;
+                                       
+                                        niveau.Add(("Doc","Doctorat"));
+                                        }
+               
+                
+            }
+
+        }
+
+        
+    }
+}
+
+<div class="faculty-container">
+
+
+
+    <div class="faculty-selection">
+
+   @if (filieres != null && filieres.Any())
+    {
+        @foreach (var niv in niveau)
+        {
+     <NavLink class="filiere-card" href="@($"/Fac/{Code}/{nomFiliere}/{niv.niveau}")" title="@($"Voir les matieres de {nomFiliere} {niv.code}")" style="text-decoration: none;">
+            <div class="faculty-frame">
+ 
+               @if(estPro){   
+                
+        <i class="fa fa-crown" style="color: rgb(209, 178, 5); font-size: 1rem;"></i>
+}
+
+                <div class="filiere-image">
+                    <i class="@icone" style="font-size: 3rem;"></i>
+                   
+                </div>
+                    <p class="filiere-name">@niv.code</p>
+            </div>
+ 
+            </NavLink>
+
+            }
+            }
+
+    </div>
+</div>
+
+<Footer />

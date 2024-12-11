@@ -1,0 +1,142 @@
+    @code{
+
+        [Parameter] public string? NomFaculte {get;set;}
+
+        [Parameter] public String? pag {get;set;}="";
+        [Parameter] public String? icone{get;set;} ="";
+        public  bool home{get;set;}
+        [Parameter] public String? nomFiliere{get;set;} ="";
+        [Parameter] public string niveau{get;set;}="";
+        [Parameter] public string? codeMatiere{get;set;}="";
+        public string? border{get;set;} 
+
+        public static Dictionary<string,List<(string, bool)>> filiere = new Dictionary<string, List<(string, bool)>>
+        {
+            { "Informatique", new List<(string, bool)> { ("fas fa-laptop", false) } },
+            { "Mathématiques", new List<(string, bool)> { ("fas fa-calculator", false) } },
+            { "Physique", new List<(string, bool)> { ("fas fa-cogs", false) } },
+            { "Chimie", new List<(string, bool)> { ("fas fa-flask", false) } },
+            { "Biosciences", new List<(string, bool)> { ("fas fa-biohazard", false) } },
+            { "Geosciences", new List<(string, bool)> { ("fas fa-globe", false) } },
+            { "ICT4D", new List<(string, bool)> { ("fas fa-user-tie", true) } },
+            { "Biologie", new List<(string, bool)> { ("fas fa-leaf", false) } },
+            { "Microbiologie", new List<(string, bool)> { ("fas fa-virus", false) } },
+            { "Pédagogie", new List<(string, bool)> { ("fas fa-chalkboard-teacher", false) } },
+            { "Psychopédagogie", new List<(string, bool)> { ("fas fa-user-graduate", false) } },
+            { "Éducation spécialisée", new List<(string, bool)> { ("fas fa-users-cog", false) } },
+            { "Lettres Modernes", new List<(string, bool)> { ("fas fa-book", false) } },
+            { "Philosophie", new List<(string, bool)> { ("fas fa-lightbulb", false) } },
+            { "Histoire", new List<(string, bool)> { ("fas fa-history", false) } }
+        };
+
+       protected override void OnInitialized(){
+
+
+      
+
+
+    }
+    }
+
+    @if(pag != "/"){
+        if( pag == $"/Fac/{NomFaculte}/{nomFiliere}/{niveau}/{codeMatiere}"){
+            border = "8px";
+        }
+        home = false;
+        
+        }else{
+            home = true;
+            
+        }
+
+<div class="header" style="border-radius: @border;">
+
+<div class="logo-container">
+
+@if(pag != "/" && pag != $"/Fac/{NomFaculte}/{nomFiliere}/{niveau}/{codeMatiere}"){
+           <NavLink class="btn-retour" title="Page precedente" onclick="javascript:window.history.back()" >
+            <i class="fas fa-arrow-left"></i>
+            </NavLink>
+}else if( pag == $"/Fac/{NomFaculte}/{nomFiliere}/{niveau}/{codeMatiere}"){
+
+
+
+<div style="display: flex;flex-direction: column; gap: 5px;">
+           <NavLink class="btn-retour" title="Retour a l'accueil" href="/" >
+            <i class="fas fa-home"></i>
+            </NavLink>
+            <NavLink class="btn-retour" title="Page precedente" onclick="javascript:window.history.back()" >
+            <i class="fas fa-arrow-left"></i>
+            </NavLink>
+</div>
+
+}else{
+     <a href="" class="navbar-brand">
+            <h1 class="name-university">
+   <img class="university-logo" style="margin-left: 4rem;" alt="logo" src="images/uni.png" />
+ <p style="font-size: 12px;margin-left:0rem;margin-top: 1rem;">university of yaounde I </p>
+            </h1>
+     </a>
+
+}
+        
+        </div>
+        
+
+    <div class="titre-name-container">
+
+        <a href="Counter" class="navbar-brand">
+            <h1 class="titre-name">
+                @if(home){
+                <img src="images/logo.png" alt="icone-code" class="logo-app"> 
+           }else{
+                <img src="images/uni.png" alt="icone-university" class="logo-app"> 
+           }
+           Cours
+           @if(codeMatiere != ""){
+            <span style="font-size: 2rem;">- @codeMatiere</span>
+           }
+           @if(!string.IsNullOrEmpty(NomFaculte)){
+
+            <p class="p-fac">Universite de yaounde I - @NomFaculte</p>
+
+            }else{
+                <p class="p-fac">Universite de yaounde I</p>
+}
+            </h1>
+            
+
+        </a>
+    </div>
+
+<div class="university-name-container">
+          <a title="@($"Vous etes sur la Page de {nomFiliere} {@niveau}")" class="navbar-brand">
+            <h1 class="university-name">
+
+                @if(icone != "" && nomFiliere != "" && niveau!= ""){
+               
+               <p style="font-size: 12px; color: #46484b;"><i class="@icone" style="font-size: 3rem;margin-bottom: 1rem;position: relative;left: 10px;"></i><br>@nomFiliere - @niveau</p>
+
+                    
+ }else if(icone != "" && nomFiliere != ""){
+
+    <p style="font-size: 12px; color: #46484b;"><i class="@icone" style="font-size: 3rem; margin-bottom: 1rem;position: relative;right: 5px;"></i><br>@nomFiliere </p>
+         
+
+ }else{
+
+
+   <img class="logo-ICT" alt="logo" src="images/code.svg" />
+ <p style="font-size: 12px;margin-left:2rem;">Par ze mignon <i class="fas fa-user-tie"> </i> </p>
+
+
+
+ }
+            </h1>
+          </a>
+
+    </div>
+
+
+
+    </div>

@@ -1,0 +1,113 @@
+@page "/Fac/{Code}"
+
+<PageTitle>@nom</PageTitle>
+
+<ICT4D.Components.Pages.Entete NomFaculte=@Code  />
+
+<div class="filiere-selection">
+
+    @code {
+
+       [Parameter]
+       public string? Code { get; set; }
+
+        public static string? nom { get; set; } ="";
+        public string? type {get;set;} = "Académique";
+        public List<(string filiere, string icone,bool pro)>? filieres { get; set; }
+
+        protected override void OnInitialized()
+        {
+       
+            var facultes = new Dictionary<string, List<(string filiere, string icone,bool pro)>>
+            {
+                { 
+                    "FS", new List<(string, string,bool)> 
+                    { 
+                        ("ICT4D", "fas fa-user-tie",true),
+                        ("Informatique", "fas fa-laptop",false),
+                        ("Mathématiques", "fas fa-calculator",false),
+                        ("Physique", "fas fa-cogs",false),
+                        ("Chimie", "fas fa-flask",false),
+                        ("Biosciences", "fas fa-biohazard",false),
+                        ("Geosciences", "fas fa-globe",false),
+                        ("Biologie", "fas fa-leaf",false),
+                        ("Microbiologie", "fas fa-virus",false)
+                    }
+                },
+                { 
+                    "FSE", new List<(string, string,bool)>
+                    { 
+                        ("Pédagogie", "fas fa-chalkboard-teacher",false),
+                        ("Psychopédagogie", "fas fa-user-graduate",false),
+                        ("Éducation spécialisée", "fas fa-users-cog",false)
+                    }
+                },
+                { 
+                    "FALSH", new List<(string, string,bool)>
+                    { 
+                        ("Lettres Modernes", "fas fa-book",false),
+                        ("Philosophie", "fas fa-lightbulb",false),
+                        ("Histoire", "fas fa-history",false)
+                    }
+                }
+            };
+
+            
+            if (!string.IsNullOrEmpty(Code))
+            {
+                if (facultes.ContainsKey(Code))
+                {
+                    nom = Code switch
+                    {
+                        "FS" => "Faculté des Sciences",
+                        "FSE" => "Faculté des Sciences de l’Éducation",
+                        "FALSH" => "Faculté des Lettres",
+                        _ => "Faculté inconnue"
+                    };
+
+                    filieres = facultes[Code];
+                }
+                else
+                {
+                    nom = "Faculté inconnue";
+                    filieres = new List<(string, string,bool)>();
+                }
+            }
+            
+        }
+        
+    }
+
+
+    @if (filieres != null && filieres.Any())
+    {
+        @foreach (var filiereItem in filieres)
+        {
+            if(filiereItem.pro){ type = "Professionnelle";}else{type = "Académique";}
+            
+            <NavLink class="filiere-card" href="@($"/Fac/{Code}/{filiereItem.filiere}")" title="@($"Filiere {type}")" style="text-decoration: none;">
+            <div class="faculty-frame">
+ 
+               @if(filiereItem.pro){   
+                
+        <i class="fa fa-crown" style="color: rgb(209, 178, 5); font-size: 1rem;"></i>
+}
+
+                <div class="filiere-image">
+                    <i class="@filiereItem.icone" style="font-size: 3rem;"></i>
+                   
+                </div>
+                    <p class="filiere-name">@filiereItem.filiere</p>
+            </div>
+ 
+            </NavLink>
+        }
+    }
+    else
+    {
+        <p>Aucune filière disponible pour cette faculté.</p>
+    }
+
+</div>
+
+<Footer />

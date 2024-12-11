@@ -1,0 +1,47 @@
+
+### Les types de variables du langage de programmation C
+
+Il existe de nombreux types de variables dans le langages C qui permettent de coder des applications. Parmi les plus populaires, on trouve :
+
+[short] : Pour les entiers courts.
+[int] :Pour les entier.
+[Long] : Pour les entiers Long.
+[char] : pour les caractères.
+[float] : pour les nombres decimaux Flottants
+[double] : Pour les nombres decimaux Flottants avec double precision.
+
+Ces types ont des caractèristiques propre a chacun , telque la taille de chaque qui est un contrainte a respecter lorsque on manipule les variables.
+
+## Outils utilisés dans le développement en C
+
+### Environnements de développement intégrés IDE
+
+Un IDE est (Integrated Development Environment) est un logiciel qui offre tous les outils nécessaires pour développer un programme. Il comprend des éditeurs de code, des outils de débogage, des gestionnaires de projets et des compilateurs.
+
+Quelques IDE populaires incluent :
+
+- [Visual Studio Code] : un éditeur de code léger, mais puissant, utilisé par de nombreux développeurs.
+- [PyCharm] : IDE dédié à Python, offrant des fonctionnalités comme le débogage et l'autocomplétion de code.
+- [IntelliJ IDEA] : IDE pour Java et d'autres langages.
+
+Ces outils permettent de travailler plus rapidement et de réduire les erreurs de développementle dans le langage c.
+
+### Le processus de développement
+
+Le développement suit généralement un [cycle de vie] structuré qui comprend plusieurs étapes clés :
+
+1. [Analyse des besoins] : Identifier ce que le logiciel doit faire.
+2. [Conception] : Planifier l'architecture du système et la structure des applications.
+3. [Codage] : Écrire le code source en utilisant un langage de programmation.
+4. [Test] : Vérifier que le programme fonctionne comme prévu.
+5. [Maintenance] : Mettre à jour et corriger les bogues après la mise en production.
+
+### La programmation orientée objet (POO)
+
+La [programmation orientée objet] est un modèle de programmation qui organise les logiciels en "objets", qui sont des structures contenant des données et des méthodes permettant de manipuler ces données. Les principes fondamentaux de la POO sont :
+
+- [Encapsulation] : Regrouper les données et les fonctions qui les manipulent.
+- [Héritage] : Créer de nouvelles classes basées sur des classes existantes.
+- [Polymorphisme] : Permettre aux objets de se comporter de différentes manières selon leur type.
+
+Ces concepts permettent de rendre le code plus modulable, réutilisable et facile à maintenir.

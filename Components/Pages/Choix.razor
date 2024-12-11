@@ -1,0 +1,55 @@
+@page "/Fac/{Code}/{nomFiliere}/{niveau}/{codeMatiere}"
+
+<Entete NomFaculte=@Code icone=@icone nomFiliere=@nomFiliere niveau=@niveau />
+
+@code{
+    public string? icone { get; set; }
+    [Parameter] public string nomFiliere { get; set; } = "";
+    [Parameter] public string? niveau { get; set; }
+    [Parameter] public string? Code { get; set; }
+    [Parameter] public string? codeMatiere{get;set;} = "";
+    public static List<(string choix,string iconechoix)>? Listchoix{get;set;}
+
+    protected override void OnInitialized(){
+
+        icone = Niveau.icone;
+        Listchoix = new List<(string choix, string iconechoix)>{
+            ("Cours","fas fa-chalkboard-teacher"),
+            ("Travaux Pratiques","fas fa-user-edit")
+
+        };
+
+    }
+}
+
+
+<div class="welcome-container" style="margin-bottom: 25px;">
+    
+    <div class="role-selection" style="margin-bottom: 5px;">
+
+@if(Listchoix != null && Listchoix.Any()){
+
+@foreach(var choix in Listchoix){
+
+    <NavLink class="role-card" href="@($"/Fac/{Code}/{nomFiliere}/{niveau}/{codeMatiere}/{choix.choix}")" title="@($"Consulter les {choix.choix}")" style="text-decoration: none;" >
+
+       <div class="faculty-frame">
+        <div class="filiere-image">
+            
+            <i class="@choix.iconechoix" style="font-size: 3rem;margin-bottom: 30px;"></i>
+        </div>
+                      
+            <p class="titre-name" style="font-size: 1rem;">@choix.choix @codeMatiere</p>
+       </div>
+        
+    </NavLink>
+       }
+       }
+
+
+    </div>
+    
+</div>
+<p class="role-text" style="text-align: center;color:#181717;font-style: italic;">Bienvenu sur notre application <strong class="logo-footer"> Cours. <img src="images/logo.png" alt="icone-code" class="logo"></strong> , nous comptons sur votre soutien pour la rendre meilleur🚀.</p>
+
+<Footer />

@@ -1,0 +1,84 @@
+
+## Qu'est-ce que le développement ?
+
+Le développement logiciel est le processus par lequel des applications et des systèmes informatiques sont créés. Il implique plusieurs étapes, allant de la conception à la maintenance. Le but est de produire des logiciels qui répondent aux besoins des utilisateurs et qui sont performants, sûrs et faciles à utiliser.
+
+L'une des premières compétences que tout développeur doit maîtriser est la (programmation). La programmation est l'art de donner des instructions à un ordinateur pour qu'il exécute des tâches spécifiques.
+
+### Les langages de programmation
+
+Il existe de nombreux (langages de programmation) qui permettent de coder des applications. Chaque langage a ses spécificités et est utilisé pour différents types de projets. Parmi les langages populaires, on trouve :
+
+[Python] : très utilisé dans les domaines de l'intelligence artificielle, du machine learning et du développement web.
+[JavaScript] : utilisé principalement pour le développement web interactif.
+
+[Java] : très utilisé pour les applications d'entreprise et le développement d'applications mobiles Android.
+
+[C++] : utilisé dans des systèmes à bas niveau, comme les systèmes d'exploitation ou les jeux vidéo.*
+
+Le choix du langage dépend souvent du projet à réaliser et des [exigences techniques] spécifiques.
+
+## Outils utilisés dans le développement
+
+### Environnements de développement intégrés IDE
+
+Un IDE est (Integrated Development Environment) est un logiciel qui offre tous les outils nécessaires pour développer un programme. Il comprend des éditeurs de code, des outils de débogage, des gestionnaires de projets et des compilateurs.
+
+Quelques IDE populaires incluent :
+
+- [Visual Studio Code] : un éditeur de code léger, mais puissant, utilisé par de nombreux développeurs.
+- [PyCharm] : IDE dédié à Python, offrant des fonctionnalités comme le débogage et l'autocomplétion de code.
+- [IntelliJ IDEA] : IDE pour Java et d'autres langages.
+
+Ces outils permettent de travailler plus rapidement et de réduire les erreurs de développement.
+
+### Le processus de développement
+
+Le développement suit généralement un [cycle de vie] structuré qui comprend plusieurs étapes clés :
+
+1. [Analyse des besoins] : Identifier ce que le logiciel doit faire.
+2. [Conception] : Planifier l'architecture du système et la structure des applications.
+3. [Codage] : Écrire le code source en utilisant un langage de programmation.
+4. [Test] : Vérifier que le programme fonctionne comme prévu.
+5. [Maintenance] : Mettre à jour et corriger les bogues après la mise en production.
+
+### La programmation orientée objet (POO)
+
+La [programmation orientée objet] est un modèle de programmation qui organise les logiciels en "objets", qui sont des structures contenant des données et des méthodes permettant de manipuler ces données. Les principes fondamentaux de la POO sont :
+
+- [Encapsulation] : Regrouper les données et les fonctions qui les manipulent.
+- [Héritage] : Créer de nouvelles classes basées sur des classes existantes.
+- [Polymorphisme] : Permettre aux objets de se comporter de différentes manières selon leur type.
+
+Ces concepts permettent de rendre le code plus modulable, réutilisable et facile à maintenir.
+
+
+## Principes de base de la programmation
+
+### Variables et types de données
+
+Les [variables] sont des emplacements en mémoire qui stockent des données. Les types de données représentent la nature des informations que ces variables peuvent contenir, comme :
+
+Les [Entiers] sont int
+- [Flottants (`float`)]
+- **Chaînes de caractères** (`string`)
+- **Booléens** (`bool`)
+
+Les variables sont utilisées pour stocker des informations temporaires pendant l'exécution du programme.
+
+```python
+# Exemple en Python
+x = 10  (Un entier)
+name = "Alice"  (Une chaîne de caractères)
+is_active = True  (Un booléen)
+
+# Main Title
+## Sub Title 1.1
+This is a normal paragraph with an (important word) included.
+$example-image.png$
+* This is a special paragraph that starts here 
+and continues here *
+
+* Y0 *
+### Sub Title 1.1.1
+Another normal paragraph.

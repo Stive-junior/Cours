@@ -1,0 +1,90 @@
+
+
+
+/* Navbar brand */
+.navbar-brand[b-qdbo14yv24] {
+    font-size: 2.0rem;
+
+}
+
+
+
+
+/* Styling the navigation items */
+.nav-item[b-qdbo14yv24] {
+    font-size: 0.7rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 17rem;
+  margin-left: -13px;
+
+}
+
+.nav-item:first-of-type[b-qdbo14yv24] {
+    padding-top: 1rem;
+}
+
+.nav-item:last-of-type[b-qdbo14yv24] {
+    padding-bottom: 1rem;
+}
+
+.nav-item[b-qdbo14yv24]  .nav-link {
+
+    border: 1px solid #181717;
+    margin-top: 5px;
+    border-radius: 4px;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    line-height: 6rem;
+    width: 100%;
+    color: #fff;
+}
+
+/* NavLink active style */
+.nav-item[b-qdbo14yv24]  a.active {
+    background-color: rgba(255,255,255,0.37);
+    color: #fff;
+}
+
+/* Hover effect on NavLink */
+.nav-item[b-qdbo14yv24]  .nav-link:hover {
+    background-color: rgba(255,255,255,0.1);
+    color: white;
+}
+
+/* Navbar responsiveness and scroll */
+.nav-scrollable[b-qdbo14yv24] {
+    display: none;
+}
+
+.navbar-toggler:checked ~ .nav-scrollable[b-qdbo14yv24] {
+    display: block;
+}
+
+@media (min-width: 641px) {
+    .navbar-toggler[b-qdbo14yv24] {
+        display: none;
+    }
+
+    .nav-scrollable[b-qdbo14yv24] {
+        /* Never collapse the sidebar for wide screens */
+        display: block;
+
+        /* Allow sidebar to scroll for tall menus */
+        height: calc(100vh - 3.5rem);
+        overflow-y: auto;
+    }
+}
+
+
+
+
+
+
+.nav-link i[b-qdbo14yv24] {
+    margin-right: 5px; /* Space between icon and text */
+    margin-left: -4px;
+}
+
