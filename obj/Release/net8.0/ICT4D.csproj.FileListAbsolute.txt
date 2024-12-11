@@ -27,3 +27,9 @@
 /home/stive-junior/ICT4D/obj/Release/net8.0/ICT4D.pdb
 /home/stive-junior/ICT4D/obj/Release/net8.0/ICT4D.genruntimeconfig.cache
 /home/stive-junior/ICT4D/obj/Release/net8.0/ref/ICT4D.dll
+/home/stive-junior/ICT4D/bin/Release/net8.0/publish/web.config
+/home/stive-junior/ICT4D/bin/Release/net8.0/publish/appsettings.Development.json
+/home/stive-junior/ICT4D/bin/Release/net8.0/publish/appsettings.json
+/home/stive-junior/ICT4D/bin/Release/net8.0/publish/ICT4D.deps.json
+/home/stive-junior/ICT4D/bin/Release/net8.0/publish/ICT4D.runtimeconfig.json
+/home/stive-junior/ICT4D/obj/Release/net8.0/ICT4D.sourcelink.json

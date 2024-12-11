@@ -1,6 +1,11 @@
 /home/stive-junior/ICT4D/publish/ICT4D
+/home/stive-junior/ICT4D/publish/publish/web.config
 /home/stive-junior/ICT4D/publish/appsettings.Development.json
 /home/stive-junior/ICT4D/publish/appsettings.json
+/home/stive-junior/ICT4D/publish/publish/appsettings.Development.json
+/home/stive-junior/ICT4D/publish/publish/appsettings.json
+/home/stive-junior/ICT4D/publish/publish/ICT4D.deps.json
+/home/stive-junior/ICT4D/publish/publish/ICT4D.runtimeconfig.json
 /home/stive-junior/ICT4D/publish/ICT4D.dll
 /home/stive-junior/ICT4D/publish/ICT4D.deps.json
 /home/stive-junior/ICT4D/publish/ICT4D.runtimeconfig.json

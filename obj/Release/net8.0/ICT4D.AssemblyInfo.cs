@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ICT4D")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+51181aaf1cf5db33b95d423e636c47f7de84c53a")]
 [assembly: System.Reflection.AssemblyProductAttribute("ICT4D")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ICT4D")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
